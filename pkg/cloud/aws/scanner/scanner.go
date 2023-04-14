@@ -73,7 +73,8 @@ func (s *AWSScanner) Scan(ctx context.Context, option flag.Options) (scan.Result
 		log.Logger.Debug("Policies successfully loaded from disk")
 		policyPaths = append(policyPaths, downloadedPolicyPaths...)
 		scannerOpts = append(scannerOpts,
-			options.ScannerWithEmbeddedPolicies(false))
+			options.ScannerWithEmbeddedPolicies(false),
+			options.ScannerWithEmbeddedLibraries(false))
 	}
 	policyPaths = append(policyPaths, option.RegoOptions.PolicyPaths...)
 	scannerOpts = append(scannerOpts, options.ScannerWithPolicyDirs(policyPaths...))
