@@ -115,7 +115,9 @@ func TestScanner_Scan(t *testing.T) {
 			name:        "happy path. terraform plan file",
 			scannerFunc: NewTerraformPlanScanner,
 			fields: fields{
-				opt: ScannerOption{},
+				opt: ScannerOption{
+					DisableEmbeddedPolicies: true,
+				},
 			},
 			files: []file{
 				{
